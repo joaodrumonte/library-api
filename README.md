@@ -1,11 +1,10 @@
 
 # 📚 Biblioteca API - CRUD com Go + MongoDB + Docker
 
-Este projeto é uma API REST simples para gerenciar livros de uma biblioteca, usando:
+Este projeto é uma API para gerenciar livros de uma biblioteca criada para um desafio técnico, usando:
 
 - Golang 1.21
 - MongoDB (via Docker)
-- Gin Web Framework
 - Docker Compose
 
 ---
@@ -19,15 +18,6 @@ Este projeto é uma API REST simples para gerenciar livros de uma biblioteca, us
 - [Docker Compose](https://docs.docker.com/compose/)
 
 ### ▶️ Rodando com Docker Compose
-
-1. Clone este repositório:
-
-```bash
-git clone https://github.com/seu-usuario/biblioteca-api.git
-cd biblioteca-api
-```
-
-2. Rode o projeto:
 
 ```bash
 docker-compose up --build
@@ -56,9 +46,9 @@ docker-compose up --build
 POST http://localhost:8080/livros
 ```
 ```form-data
-titulo: Dom Casmurro
-autor: Machado de Assis
-desc: Romance clássico brasileiro
+titulo: O senhor dos Anéis
+autor: J. R. R. Tolkien
+desc: Numa cidadezinha indolente do Condado, um jovem hobbit é encarregado de uma imensa tarefa. Deve empreender uma perigosa viagem através da Terra-média até as Fendas da Perdição, e lá destruir o Anel do Poder - a única coisa que impede o domínio maléfico do Senhor do Escuro.
 ```
 
 ---
@@ -74,31 +64,31 @@ GET http://localhost:8080/livros
 
 Se nenhum livro for encontrado, retorna:
 ```json
-{ "message": "Nenhum livro encontrado. Cadastre um novo." }
+{ "error": "Nenhum livro encontrado. Cadastre um novo." }
 ```
 
 ---
 
 ### 🔍 3. Obter Livro por ID
 
-- **GET** `/livros/obter?id=<id>`
+- **GET** `/livro?id=<id>`
 
 **Exemplo:**
 ```bash
-GET http://localhost:8080/livros/obter?id=665f1d2a4a99a824e1f4bb01
+GET http://localhost:8080/livro?id=665f1d2a4a99a824e1f4bb01
 ```
 
 ---
 
 ### ✏️ 4. Atualizar Livro
 
-- **PUT** `/livros?id=<id>`
+- **PUT** `/livro?id=<id>`
 - **Content-Type:** `multipart/form-data`
 - Pode atualizar 1 ou mais campos.
 
 **Exemplo:**
 ```bash
-PUT http://localhost:8080/livros?id=665f1d2a4a99a824e1f4bb01
+PUT http://localhost:8080/livro?id=665f1d2a4a99a824e1f4bb01
 ```
 ```form-data
 autor: Novo Autor
@@ -113,28 +103,22 @@ autor: Novo Autor
 
 ### 🗑️ 5. Deletar Livro
 
-- **DELETE** `/livros?id=<id>`
+- **DELETE** `/livro?id=<id>`
 
 **Exemplo:**
 ```bash
-DELETE http://localhost:8080/livros?id=665f1d2a4a99a824e1f4bb01
+DELETE http://localhost:8080/livro?id=665f1d2a4a99a824e1f4bb01
 ```
 
 ---
 
 ## ⚙️ Tecnologias e Dependências
 
-- [Go 1.21](https://golang.org/doc/go1.21)
-- [Gin](https://github.com/gin-gonic/gin)
-- [MongoDB Go Driver](https://github.com/mongodb/mongo-go-driver)
-- [MongoDB (via Docker)](https://hub.docker.com/_/mongo)
+- Go 1.21
+- Gin
+- MongoDB Go Driver
+- MongoDB (via Docker)
 
 ---
 
-## 📬 Contato
 
-João Carlos  
-🔗 [linkedin.com/in/seu-usuario](https://linkedin.com/in/seu-usuario)  
-📧 seu.email@exemplo.com
-
----
